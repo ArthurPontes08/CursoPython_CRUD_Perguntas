@@ -67,6 +67,17 @@ scrollbar.pack(side="right", fill="y")
 tree.pack(fill="both", expand=True)
 
 
+btn_adicionar = ttk.Button(frame_top, text="Adicionar")
+btn_adicionar.grid(row=3, column=0, padx=5, pady=10)
+
+btn_atualizar = ttk.Button(frame_top, text="Atualizar")
+btn_atualizar.grid(row=3, column=1, padx=5, pady=10)
+
+btn_excluir = ttk.Button(frame_top, text="Excluir")
+btn_excluir.grid(row=3, column=2, padx=5, pady=10)
+
+btn_limpar = ttk.Button(frame_top, text="Limpar")
+btn_limpar.grid(row=3, column=3, padx=5, pady=10)
 
 
 
