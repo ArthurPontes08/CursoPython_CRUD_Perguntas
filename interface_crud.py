@@ -59,7 +59,12 @@ tree.column("pergunta", width=350)
 tree.column("opcoes", width=300)
 tree.column("resposta", width=150)
 
+# Scrollbar (barra de rolagem)
+scrollbar = ttk.Scrollbar(frame_bottom, orient="vertical", command=tree.yview)
+tree.configure(yscroll=scrollbar.set)
 
+scrollbar.pack(side="right", fill="y")
+tree.pack(fill="both", expand=True)
 
 
 
