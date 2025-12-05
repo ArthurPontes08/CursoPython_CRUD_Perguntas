@@ -1,12 +1,10 @@
 import tkinter as tk 
 from tkinter import ttk, messagebox 
-import logica
 
-def iniciar_interface(): 
- janela = tk.Tk() 
- janela.title("CRUD de Perguntas") 
- janela.geometry("850x500") 
- perguntas = logica.carregar_dados()
+janela = tk.Tk() 
+janela.title("CRUD de Perguntas") 
+janela.geometry("850x500") 
+
 
 # === Interface === 
 # === Interface ===
@@ -41,8 +39,34 @@ ttk.Label(frame, text="Resposta Correta:").grid(row=2, column=2, padx=5, pady=5,
 entrada_correta = ttk.Entry(frame, width=35)
 entrada_correta.grid(row=2, column=3, padx=5, pady=5, sticky="w")
 
+# =================== TREEVIEW (LISTA) ====================
+
+frame_bottom = ttk.LabelFrame(janela, text="Lista de Perguntas")
+frame_bottom.place(x=10, y=180, width=880, height=300)
+
+# Criando a tabela
+colunas = ("pergunta", "opcoes", "resposta")
+
+tree = ttk.Treeview(frame_bottom, columns=colunas, show="headings")
+
+# Cabeçalhos (títulos das colunas)
+tree.heading("pergunta", text="Pergunta")
+tree.heading("opcoes", text="Opções")
+tree.heading("resposta", text="Resposta")
+
+# Largura das colunas
+tree.column("pergunta", width=350)
+tree.column("opcoes", width=300)
+tree.column("resposta", width=150)
 
 
+
+
+
+
+
+
+janela.mainloop()
 
 
 
