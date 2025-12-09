@@ -67,7 +67,7 @@ scrollbar.pack(side="right", fill="y")
 tree.pack(fill="both", expand=True)
 
 
-btn_adicionar = ttk.Button(frame_top, text="Adicionar")
+btn_adicionar = ttk.Button(frame_top, text="Criar Pergunta")
 btn_adicionar.grid(row=3, column=0, padx=5, pady=10)
 
 btn_atualizar = ttk.Button(frame_top, text="Atualizar")
