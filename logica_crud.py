@@ -21,3 +21,10 @@ def adicionar(perguntas, nova):
       salvar_dados(perguntas)
     except ValueError:
         messagebox.showerror("É necessario preencher o campo vazio.")
+
+def atualizar(perguntas, indice, nova):
+    try:
+     perguntas[indice] = nova
+     salvar_dados(perguntas)
+    except ValueError:
+        messagebox.showerror("É necessario preencher o campo vazio.")        
