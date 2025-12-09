@@ -28,3 +28,7 @@ def atualizar(perguntas, indice, nova):
      salvar_dados(perguntas)
     except ValueError:
         messagebox.showerror("É necessario preencher o campo vazio.")        
+
+def excluir(perguntas, indice):
+    perguntas.pop(indice)
+    salvar_dados(perguntas)                             
