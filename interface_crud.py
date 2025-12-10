@@ -110,6 +110,27 @@ def ao_selecionar(event):
 
 tree.bind("<<TreeviewSelect>>", ao_selecionar)
 
+def adicionar_ui():
+        pergunta = entrada_pergunta.get().strip()
+        op1 = entrada_opcao1.get().strip()
+        op2 = entrada_opcao2.get().strip()
+        op3 = entrada_opcao3.get().strip()
+        correta = entrada_correta.get().strip()
+
+        if not pergunta or not correta:
+            messagebox.showwarning("Aviso", "Pergunta e resposta correta são obrigatórias.")
+            return
+
+        nova = {
+            "pergunta": pergunta,
+            "opcoes": [op for op in (op1, op2, op3) if op],
+            "resposta": correta
+        }
+
+        logica.adicionar(perguntas, nova)
+        perguntas[:] = logica.carregar_dados()
+        atualizar_treeview()
+        limpar_campos()
 
 
 
