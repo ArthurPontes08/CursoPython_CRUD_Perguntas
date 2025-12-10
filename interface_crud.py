@@ -155,7 +155,19 @@ def atualizar_ui():
         atualizar_treeview()
         limpar_campos()
 
+def excluir_ui():
+        nonlocal selecionado_index
+        if selecionado_index is None:
+            messagebox.showinfo("Info", "Selecione uma pergunta para excluir.")
+            return
 
+        if not messagebox.askyesno("Confirma", "Deseja excluir a pergunta selecionada?"):
+            return
+
+        logica.excluir(perguntas, selecionado_index)
+        perguntas[:] = logica.carregar_dados()
+        atualizar_treeview()
+        limpar_campos()
 
 
 
