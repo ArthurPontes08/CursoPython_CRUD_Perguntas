@@ -66,6 +66,21 @@ tree.configure(yscroll=scrollbar.set)
 scrollbar.pack(side="right", fill="y")
 tree.pack(fill="both", expand=True)
 
+def atualizar_treeview():
+        tree.delete(*tree.get_children())
+        for i, p in enumerate(perguntas):
+            opcoes_texto = ", ".join(p.get("opcoes", []))
+            tree.insert("", "end", iid=str(i), values=(p.get("pergunta", ""), opcoes_texto, p.get("resposta", "")))
+
+
+
+
+
+
+
+
+
+
 
 btn_adicionar = ttk.Button(frame_top, text="Criar Pergunta")
 btn_adicionar.grid(row=3, column=0, padx=5, pady=10)
