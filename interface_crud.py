@@ -132,7 +132,28 @@ def adicionar_ui():
         atualizar_treeview()
         limpar_campos()
 
+def atualizar_ui():
+        nonlocal selecionado_index
+        if selecionado_index is None:
+            messagebox.showinfo("Info", "Selecione uma pergunta para atualizar.")
+            return
 
+        pergunta = entrada_pergunta.get().strip()
+        op1 = entrada_opcao1.get().strip()
+        op2 = entrada_opcao2.get().strip()
+        op3 = entrada_opcao3.get().strip()
+        correta = entrada_correta.get().strip()
+
+        nova = {
+            "pergunta": pergunta,
+            "opcoes": [op for op in (op1, op2, op3) if op],
+            "resposta": correta
+        }
+
+        logica.atualizar(perguntas, selecionado_index, nova)
+        perguntas[:] = logica.carregar_dados()
+        atualizar_treeview()
+        limpar_campos()
 
 
 
