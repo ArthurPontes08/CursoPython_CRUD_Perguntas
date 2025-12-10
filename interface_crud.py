@@ -72,6 +72,43 @@ def atualizar_treeview():
             opcoes_texto = ", ".join(p.get("opcoes", []))
             tree.insert("", "end", iid=str(i), values=(p.get("pergunta", ""), opcoes_texto, p.get("resposta", "")))
 
+def limpar_campos():
+        entrada_pergunta.delete(0, "end")
+        entrada_opcao1.delete(0, "end")
+        entrada_opcao2.delete(0, "end")
+        entrada_opcao3.delete(0, "end")
+        entrada_correta.delete(0, "end")
+        nonlocal selecionado_index
+        selecionado_index = None
+        tree.selection_remove(tree.selection())
+
+def ao_selecionar(event):
+        nonlocal selecionado_index
+        sel = tree.selection()
+        if sel:
+            iid = sel[0]
+            try:
+                idx = int(iid)
+            except ValueError:
+                return
+
+            selecionado_index = idx
+            p = perguntas[idx]
+
+            entrada_pergunta.delete(0, "end")
+            entrada_pergunta.insert(0, p.get("pergunta", ""))
+
+            ops = p.get("opcoes", [])
+            entrada_opcao1.delete(0, "end"); entrada_opcao1.insert(0, ops[0] if len(ops) > 0 else "")
+            entrada_opcao2.delete(0, "end"); entrada_opcao2.insert(0, ops[1] if len(ops) > 1 else "")
+            entrada_opcao3.delete(0, "end"); entrada_opcao3.insert(0, ops[2] if len(ops) > 2 else "")
+
+            entrada_correta.delete(0, "end")
+            entrada_correta.insert(0, p.get("resposta", ""))
+        else:
+            limpar_campos()
+
+tree.bind("<<TreeviewSelect>>", ao_selecionar)
 
 
 
